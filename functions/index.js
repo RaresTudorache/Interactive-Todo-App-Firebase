@@ -5,5 +5,7 @@ const{
     getAllTodos
 } = require('./APIs/todos')
 
-app.get('/pula',getAllTodos);
+//get the objects statically at the moment
+app.get('/todos',getAllTodos);
+
 exports.api = functions.https.onRequest(app);
