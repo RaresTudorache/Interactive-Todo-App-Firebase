@@ -3,8 +3,11 @@ const app = require('express')();
 
 const{
     getAllTodos,
-    postOneTodo
+    postOneTodo,
+    deleteOneTodo
 } = require('./APIs/todos')
+
+app.delete('/todo/:todoId', deleteOneTodo); //delete one todo
 
 app.post('/todo', postOneTodo); //post one todo
 

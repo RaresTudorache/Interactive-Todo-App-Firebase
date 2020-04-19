@@ -23,3 +23,33 @@ exports.getAllTodos = (request,response) => {
            return response.status(500).json({error:err.code});
        });
 };
+
+exports.postOneTodo = (request, response) => {
+
+    if(request.body.body.trim() === ''){
+        return response.status(400).json({body: 'Must not be empty'});
+    }
+
+    if(request.body.title.trim() === ''){
+        return response.status(400).json({body: 'Must not be empty'});
+    }
+
+    const newTodoitem = {
+        title : request.body.title,
+        body : request.body.body,
+        createAt : new Date().toISOString()
+    }
+    db
+        .collection('todos')
+        .add(newTodoitem)
+        .then(doc => {
+            const responseTodoItem = newTodoitem;
+            responseTodoItem.id = doc.id;
+            return response.json(responseTodoItem);
+        })
+        .catch(err => {
+            response.status(500).json({error: "Something went wrong"});
+            console.error(err);
+        });
+
+};
