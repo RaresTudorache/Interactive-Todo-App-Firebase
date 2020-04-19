@@ -4,7 +4,7 @@ const {db} = require ('../util/admin');
 exports.getAllTodos = (request,response) => {
     db
        .collection('todos')
-       .orderBy('createAt', 'desx')
+       .orderBy('createAt', 'desc')
        .get()
        .then( data => {
             let todos = [];
