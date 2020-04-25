@@ -1,7 +1,11 @@
 const functions = require('firebase-functions');
 const app = require('express')();
 
-const {loginUser} = require('./API/users');
+const {loginUser,
+       signupUser,    
+} = require('./APIs/users');
+
+app.post('/signup', signupUser);
 
 app.post('/login', loginUser);
 
