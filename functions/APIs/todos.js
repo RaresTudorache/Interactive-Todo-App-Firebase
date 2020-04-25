@@ -1,6 +1,6 @@
 const {db} = require ('../util/admin');
 
-
+//function for PUT, POST, DELETE and GET HTTP methods
 exports.getAllTodos = (request,response) => {
     db
        .collection('todos')

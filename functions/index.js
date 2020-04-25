@@ -1,6 +1,10 @@
 const functions = require('firebase-functions');
 const app = require('express')();
 
+const {loginUser} = require('./API/users');
+
+app.post('/login', loginUser);
+
 const{
     getAllTodos,
     postOneTodo,
